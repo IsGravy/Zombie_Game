@@ -9,7 +9,6 @@ func _ready() -> void:
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	
 
-
+#Spawn Zombie
 func _on_Spawner_timeout():
-	pass
-	
+	get_node("/root/World/Navigation2D/NavigationPolygonInstance").add_child(z.instance())
