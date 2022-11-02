@@ -4,9 +4,9 @@ var health: int = 100
 
 var _velocity := Vector2.ZERO
 
-export var path_to_player = NodePath()
+onready var path_to_player = NodePath("/root/World/Player")
 onready var _agent: NavigationAgent2D = $NavigationAgent2D
-onready var _player := get_node(path_to_player)
+onready var _player := get_tree().current_scene.get_node(path_to_player)
 onready var _timer = $Timer
 onready var _sprite: Sprite = $Zombie_Sprite
 
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	
 func _update_path() -> void:
 	_agent.set_target_location(_player.global_position)
-
+	
 func handle_hit():
 	health -= 20
 	if health <= 0:
